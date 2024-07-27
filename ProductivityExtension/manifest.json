@@ -1,0 +1,13 @@
+{
+    "name": "Productivity Tracker",
+    "version": "1.0.0",
+    "description": "This is an extension that uses a camera to detect how ...",
+    "manifest_version": 3,
+    "author": "Karanveer Panesar",
+
+    "action": {
+        "default_popup": "index.html",
+        "default_titke": "Productivity Tracker"
+    }
+
+}
