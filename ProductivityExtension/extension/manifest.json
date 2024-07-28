@@ -23,7 +23,8 @@
       "128": "rainboweye.jpg"
     },
     "background": {
-      "service_worker": "background.js"
+      "persistent": false,
+      "scripts": [ "background.js"]
     }
   }
 

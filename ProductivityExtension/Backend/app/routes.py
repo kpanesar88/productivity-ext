@@ -18,25 +18,25 @@ totalSW.start()
 
 main_bp = Blueprint('main', __name__)
 
-def generate_frames():
-    camera = cv2.VideoCapture(0)
-    while True:
-        success, frame = camera.read()
-        if not success:
-            break
-        else:
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+# def generate_frames():
+#     camera = cv2.VideoCapture(0)
+#     while True:
+#         success, frame = camera.read()
+#         if not success:
+#             break
+#         else:
+#             ret, buffer = cv2.imencode('.jpg', frame)
+#             frame = buffer.tobytes()
+#             yield (b'--frame\r\n'
+#                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @main_bp.route("/", methods=['GET', 'POST'])
 def index():
   return render_template("home.html")
 
-@main_bp.route('/video_feed')
-def video_feed():
-  return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+# @main_bp.route('/video_feed')
+# def video_feed():
+#   return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @main_bp.route("/track", methods=['GET'])
 def track():

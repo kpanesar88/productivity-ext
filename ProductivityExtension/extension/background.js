@@ -11,5 +11,5 @@ getTrackingData = () => {
 chrome.runtime.onInstalled.addListener(() => {
     console.log("Extension installed");
     // Periodically fetch tracking data
-    setInterval(getTrackingData, 5000);  // Fetch every 5 seconds
+    setInterval(getTrackingData(), 5000);  // Fetch every 5 seconds
 });

@@ -4,9 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Productivity Tracker</title>
-    <script src="popup.js" defer></script>
-    <script src="background.js"></script>
-    <script src="config.js"></script>
 
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -20,6 +17,11 @@
           <a href="camera.html" target="_blank" class="camera-link"
             >Test Your Camera!</a
           >
+          <!-- <img
+            src="http://127.0.0.1:5000/video_feed"
+            alt="cam feed"
+            id="camera_feed"
+            style="width: 50px; height: 50px" /> -->
         </li>
       </ul>
     </div>
@@ -31,7 +33,7 @@
       </button>
       <div class="help-menu">
         <ul>
-          <li><a href="../Backend/app/templates/home.html">Home</a></li>
+          <li><a href="http://localhost:5000/" target="_blank">Home</a></li>
           <li><a href="../Backend/app/templates/home.html">Rewards</a></li>
           <li><a href="../Backend/app/templates/home.html">Help</a></li>
         </ul>
@@ -40,6 +42,9 @@
     <button class="refresh-button" id="refresh-button">
       <img src="refresh.png" alt="Refresh" class="refresh-icon" />
     </button>
+    <script src="background.js"></script>
+    <script src="config.js"></script>
     <script src="script.js"></script>
+    <script src="popup.js"></script>
   </body>
 </html>
