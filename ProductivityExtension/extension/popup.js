@@ -1,8 +1,9 @@
-document.getElementById('fetchData').addEventListener('click', () => {
-  fetch(`${CONFIG.BACKEND_URL}/data`)
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById('seconds').innerText = JSON.stringify(data);
-    })
-    .catch(error => console.error('Error:', error));
+document.addEventListener('DOMContentLoaded', () => {
+  let displayButton = document.getElementById('refresh-button');
+
+  displayButton.addEventListener('click', () => {
+      chrome.runtime.getBackgroundPage((backgroundPage) => {
+          backgroundPage.getTrackingData();
+      });
+  });
 });
