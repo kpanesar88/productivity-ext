@@ -1,19 +1,131 @@
-@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap');
-
+/* General reset for padding and margins */
 * {
     margin: 0;
-    padding: 10px;
+    padding: 0;
     box-sizing: border-box;
 }
 
-body{
-    font-family: Roboto Slab, Arial, Helvetica, sans-serif;
+body {
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: black;
+    background-color: #121212;
+    color: #ffffff;
+    position: relative;
+}
 
+.container {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
 
+h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style: none;
+    margin-top: 20px;
+    text-align: left;
+}
+
+ul li {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #ffffff;
+    text-align: center;
+}
+
+ul li span {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 24px;
+    color: #ff9800;
+}
+
+/* Help button and menu */
+.help-menu-wrapper {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    display: inline-block;
+    text-align: center;
+}
+
+.help-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.help-button .dot {
+    height: 6px;
+    width: 6px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin: 4px 0;
+}
+
+.help-menu {
+    display: none;
+    position: absolute;
+    bottom: 40px;
+    right: 0;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    text-align: left;
+}
+
+.help-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.help-menu ul li {
+    margin: 5px 0;
+}
+
+.help-menu ul li a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.help-menu ul li a:hover {
+    text-decoration: underline;
+}
+
+.help-menu-wrapper:hover .help-menu {
+    display: block;
 }
