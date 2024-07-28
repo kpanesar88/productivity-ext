@@ -8,3 +8,7 @@ document.getElementById('modeToggle').addEventListener('click', function() {
         logo.src = 'blueeye.png';
     }
 });
+
+document.getElementById('requestCameraPermission').addEventListener('click', function() {
+    window.location.href = 'camera.html';
+});

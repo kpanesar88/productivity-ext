@@ -29,7 +29,7 @@ h2 {
     color: #ffffff;
 }
 
-button {
+button, a.camera-link {
     padding: 10px 20px;
     margin: 10px;
     border: none;
@@ -38,10 +38,12 @@ button {
     color: #ffffff;
     font-size: 16px;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:hover, a.camera-link:hover {
     background-color: #0056b3;
 }
 
@@ -52,7 +54,7 @@ ul {
 }
 
 ul li {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     font-size: 18px;
     color: #ffffff;
     text-align: center;
@@ -60,7 +62,7 @@ ul li {
 
 ul li span {
     display: block;
-    margin-top: 10px;
+    margin-top: 5px;
     font-weight: bold;
     font-size: 24px;
     color: #ff9800;
@@ -128,4 +130,20 @@ ul li span {
 
 .help-menu-wrapper:hover .help-menu {
     display: block;
+}
+
+/* Refresh button */
+.refresh-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1px;
+    position: fixed;
+    bottom: 1px; /* Adjusted for more bottom position */
+    left: 1px;  /* Adjusted for more left position */
+}
+
+.refresh-icon {
+    width: 30px;
+    height: 30px;
 }

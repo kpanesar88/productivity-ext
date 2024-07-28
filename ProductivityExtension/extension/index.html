@@ -9,10 +9,10 @@
 <body>
     <div class="container">
         <h2>Productivity Tracker</h2>
-        <button id="requestCameraPermission">Allow Camera Access</button>
         <ul>
-            <li>Seconds Distracted: <br><span id="seconds">0</span></li>
-            <li>Total Percentage Distracted: <br><span id="percentage">0%</span></li>
+            <li>Seconds Focused: <br><span id="seconds">0</span></li>
+            <li>Total Percentage Focused: <br><span id="percentage">0%</span></li>
+            <li><a href="camera.html" target="_blank" class="camera-link">Test Your Camera!</a></li>
         </ul>
     </div>
     <div class="help-menu-wrapper">
@@ -29,5 +29,9 @@
             </ul>
         </div>
     </div>
+    <button class="refresh-button" id = "refresh-button">
+        <img src="refresh.png" alt="Refresh" class="refresh-icon">
+    </button>
+    <script src="script.js"></script>
 </body>
 </html>
