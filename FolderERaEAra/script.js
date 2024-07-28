@@ -12,3 +12,4 @@ document.getElementById('modeToggle').addEventListener('click', function() {
 document.getElementById('requestCameraPermission').addEventListener('click', function() {
     window.location.href = 'camera.html';
 });
+
