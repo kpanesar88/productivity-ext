@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, Blueprint, Response
+from flask import Flask, render_template, jsonify, Blueprint, Response, url_for
 
 import cv2
 from gaze_tracking import GazeTracking
@@ -18,25 +18,25 @@ totalSW.start()
 
 main_bp = Blueprint('main', __name__)
 
-# def generate_frames():
-#     camera = cv2.VideoCapture(0)
-#     while True:
-#         success, frame = camera.read()
-#         if not success:
-#             break
-#         else:
-#             ret, buffer = cv2.imencode('.jpg', frame)
-#             frame = buffer.tobytes()
-#             yield (b'--frame\r\n'
-#                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+def generate_frames():
+    camera = cv2.VideoCapture(0)
+    while True:
+        success, frame = camera.read()
+        if not success:
+            break
+        else:
+            ret, buffer = cv2.imencode('.jpg', frame)
+            frame = buffer.tobytes()
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @main_bp.route("/", methods=['GET', 'POST'])
 def index():
   return render_template("home.html")
 
-# @main_bp.route('/video_feed')
-# def video_feed():
-#   return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+@main_bp.route('/video_feed')
+def video_feed():
+  return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @main_bp.route("/track", methods=['GET'])
 def track():
@@ -60,6 +60,9 @@ def track():
       focusSW.stop()
       text = "Distracted"
       red = 255
+
+  cv2.putText(frame, text, (90, 60), cv2.FONT_HERSHEY_DUPLEX, 1.6, (blue, green, red), 2)
+
   focus_seconds = focusSW.duration
   focus_seconds = focus_seconds % (24 * 3600)
   focus_hour = focus_seconds // 3600
@@ -73,6 +76,12 @@ def track():
   total_seconds %= 3600
   total_minutes = total_seconds // 60
   total_seconds %= 60
+
+  cv2.putText(frame, f"Total Time:  {int(total_hour):01d}:{int(total_minutes):02d}:{int(total_seconds):02d}" , (90, 130), cv2.FONT_HERSHEY_DUPLEX, 0.9, (255, 255, 255), 1)
+  cv2.putText(frame, f"Time Focused:  {int(focus_hour):01d}:{int(focus_minutes):02d}:{int(focus_seconds):02d}" , (90, 170), cv2.FONT_HERSHEY_DUPLEX, 0.9, (255, 255, 255), 1)
+
+  cv2.imshow("GazeTracker", frame)
+
   
   
   return jsonify(time_elapsed=total_seconds, time_focused=focus_seconds)

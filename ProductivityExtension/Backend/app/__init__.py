@@ -3,7 +3,7 @@ from flask import Flask
 
 def create_app():
     app = Flask(__name__)
-    
+    # app._static_folder = '/ProductivityExtension/Backend/app/static'
     
     # Register blueprints (if any)
     from app.routes import main_bp

@@ -1,9 +1,22 @@
-document.addEventListener('DOMContentLoaded', () => {
-  let displayButton = document.getElementById('refresh-button');
-
-  displayButton.addEventListener('click', () => {
-      chrome.runtime.getBackgroundPage((backgroundPage) => {
-          backgroundPage.getTrackingData();
-      });
+document.addEventListener("DOMContentLoaded", () => {
+  chrome.storage.local.get(["trackingData"], function (result) {
+    if (result.trackingData) {
+      document.getElementById("time_elapsed").innerText =
+        result.trackingData.time_elapsed;
+      document.getElementById("time_focused").innerText =
+        result.trackingData.time_focused;
+    }
   });
+
+  // Optionally refresh the data displayed every second
+  setInterval(() => {
+    chrome.storage.local.get(["trackingData"], function (result) {
+      if (result.trackingData) {
+        document.getElementById("percentage").innerText =
+          result.trackingData.time_focused / result.trackingData.time_elapsed;
+        document.getElementById("seconds").innerText =
+          result.trackingData.time_focused;
+      }
+    });
+  }, 1000);
 });
