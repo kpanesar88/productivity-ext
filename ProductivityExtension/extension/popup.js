@@ -1,8 +1,22 @@
-document.getElementById('fetchData').addEventListener('click', () => {
-  fetch(`${CONFIG.BACKEND_URL}/data`)
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById('seconds').innerText = JSON.stringify(data);
-    })
-    .catch(error => console.error('Error:', error));
+document.addEventListener("DOMContentLoaded", () => {
+  chrome.storage.local.get(["trackingData"], function (result) {
+    if (result.trackingData) {
+      document.getElementById("time_elapsed").innerText =
+        result.trackingData.time_elapsed;
+      document.getElementById("time_focused").innerText =
+        result.trackingData.time_focused;
+    }
+  });
+
+  // Optionally refresh the data displayed every second
+  setInterval(() => {
+    chrome.storage.local.get(["trackingData"], function (result) {
+      if (result.trackingData) {
+        document.getElementById("percentage").innerText =
+          result.trackingData.time_focused / result.trackingData.time_elapsed;
+        document.getElementById("seconds").innerText =
+          result.trackingData.time_focused;
+      }
+    });
+  }, 1000);
 });

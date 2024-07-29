@@ -5,7 +5,9 @@
     "manifest_version": 3,
     "permissions": [
       "activeTab",
-      "camera"
+      "camera",
+      "storage",
+      "alarms"
     ],
     "author": "Karanveer Panesar",
     "action": {
@@ -19,6 +21,9 @@
       "16": "blueeye.png",
       "48": "blueeye.png",
       "128": "rainboweye.jpg"
+    },
+    "background": {
+      "service_worker": "background.js"
     }
   }
 
